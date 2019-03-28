@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { Injectable } from '@angular/core';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,8 +11,9 @@ export class EngineService {
   private camera: THREE.PerspectiveCamera;
   private scene: THREE.Scene;
   private light: THREE.AmbientLight;
-
+  private loader: THREE.ObjectLoader; //Used to load 3d Model from path.
   private cube: THREE.Mesh;
+ // private THREE = window.THREE = require('thee)');
 
   createScene(elementId: string): void {
     // The first step is to get the reference of the canvas element from our HTML document
@@ -41,6 +43,9 @@ export class EngineService {
     this.light = new THREE.AmbientLight( 0x404040 );
     this.light.position.z = 10;
     this.scene.add(this.light);
+
+    this.loader = new THREE.ObjectLoader();
+    //this.loader.load('C:\Users\Thomas\Documents\BioModels\Before smooth.mb',function(mb));
 
     let geometry = new THREE.BoxGeometry(1, 1, 1);
     let material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
