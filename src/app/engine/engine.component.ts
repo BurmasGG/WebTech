@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-engine',
   templateUrl: './engine.component.html',
-  styleUrls: [],
+  styleUrls: ['./engine.component.css'],
 })
 export class EngineComponent implements OnInit {
   private canEleId = 'renderCanvas';

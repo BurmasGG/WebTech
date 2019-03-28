@@ -23,7 +23,11 @@ export class EngineService {
       antialias: true // smooth edges
     });
     this.renderer.setSize((window.innerWidth/2), (window.innerHeight/2));
-
+    // this.canvas.height = window.innerHeight/2;
+    // this.canvas.width = window.innerWidth/2;
+    // this.canvas.style = "margin-left: 50%";
+    // this.canvas.setAttribute('margin-left', '50%')
+    
     // create the scene
     this.scene = new THREE.Scene();
 
