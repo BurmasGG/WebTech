@@ -10,10 +10,10 @@ export class EngineService {
   private renderer: THREE.WebGLRenderer;
   private camera: THREE.PerspectiveCamera;
   private scene: THREE.Scene;
-  private light: THREE.AmbientLight;
-  private loader: THREE.ObjectLoader; //Used to load 3d Model from path.
+  private light: THREE.AmbientLight; 
   private cube: THREE.Mesh;
- // private THREE = window.THREE = require('thee)');
+  //private objLoader = new THREE.OBJLoader();
+
 
   createScene(elementId: string): void {
     // The first step is to get the reference of the canvas element from our HTML document
@@ -44,8 +44,8 @@ export class EngineService {
     this.light.position.z = 10;
     this.scene.add(this.light);
 
-    this.loader = new THREE.ObjectLoader();
-    //this.loader.load('C:\Users\Thomas\Documents\BioModels\Before smooth.mb',function(mb));
+    //this.objLoader = new OBJLoader;
+    
 
     let geometry = new THREE.BoxGeometry(1, 1, 1);
     let material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
