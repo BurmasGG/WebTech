@@ -21,7 +21,7 @@ export class EngineService {
 
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvas,
-      alpha: true,    // transparent background
+      //alpha: true,    // transparent background
       antialias: true // smooth edges
     });
     this.renderer.setSize((window.innerWidth/2), (window.innerHeight/2));
@@ -75,8 +75,8 @@ export class EngineService {
   }
 
   resize() {
-    let width = window.innerWidth;
-    let height = window.innerHeight;
+    let width = window.innerWidth/2;
+    let height = window.innerHeight/2;
 
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();

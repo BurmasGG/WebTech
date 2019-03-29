@@ -3,6 +3,19 @@ body {
 }
  
 #textBoxLeft {
+    
     width: 40%;
-
+ 
 } 
+#BoxHeader{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 50%;
+    position: absolute;
+    left: 45%;
+    top: 5%;
+    color: grey;
+}
+
+Em{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}

@@ -6,5 +6,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+    title = 'appWebTechMini';
+    coll = document.getElementsByClassName("collapsible");
+
+    constructor(){
+    
+    var i = 0;
+
+   /* for (let i = 0; i < this.coll.length; i++){
+      this.coll[i].addEventListener("click",function (){
+
+      }
+      
+    
+  }*/
+
+
+}
 }
