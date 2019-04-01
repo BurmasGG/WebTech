@@ -7,7 +7,8 @@ import { UiInfobarTopComponent } from './ui/ui-infobar-top/ui-infobar-top.compon
 import { UiSidebarLeftComponent } from './ui/ui-sidebar-left/ui-sidebar-left.component';
 import { UiSidebarRightComponent } from './ui/ui-sidebar-right/ui-sidebar-right.component';
 import { UiComponent } from './ui/ui.component';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatExpansionModule} from '@angular/material/expansion';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,9 @@ import { UiComponent } from './ui/ui.component';
     UiSidebarRightComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatExpansionModule
   ],
   providers: [
   ],

@@ -2,6 +2,7 @@
  * node_modules imports
  *****************************************************/
  @import 'node_modules/bootstrap/scss/bootstrap.scss';
+ @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
  /*****************************************************
   * project imports
@@ -23,9 +24,10 @@
  body {
    background-color: $mainBgColor;
    color: $mainTextColor;
+   
  }
  
- .engine-wrapper{
+  .engine-wrapper{
    position: absolute;
    top: 0;
    right: 0;
