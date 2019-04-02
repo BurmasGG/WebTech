@@ -1,6 +1,9 @@
+/* This css controls the position of the box with the 3d model */
+
 #renderCanvas{
     position: absolute;
     margin-left: 45%;
     margin-top: 10%;
+  
 
 }

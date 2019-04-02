@@ -1,10 +1,13 @@
 import * as THREE from 'three';
 import { Injectable } from '@angular/core';
+import objLoader from 'three-obj-loader';
+import GLTFLoader from 'three-gltf-loader';
 
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class EngineService {
   private canvas: HTMLCanvasElement;
   private renderer: THREE.WebGLRenderer;
@@ -12,13 +15,15 @@ export class EngineService {
   private scene: THREE.Scene;
   private light: THREE.AmbientLight; 
   private cube: THREE.Mesh;
-  //private objLoader = new THREE.OBJLoader();
+  
+  
+  
 
 
   createScene(elementId: string): void {
     // The first step is to get the reference of the canvas element from our HTML document
     this.canvas = <HTMLCanvasElement>document.getElementById(elementId);
-
+    
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvas,
       //alpha: true,    // transparent background
@@ -33,6 +38,18 @@ export class EngineService {
     // create the scene
     this.scene = new THREE.Scene();
 
+    const loader = new GLTFLoader();
+    loader.load(
+      'path/to/thing',
+      (gltf)=>{
+        this.scene.add(gltf.scene);
+      },
+      (xhr) =>{
+        console.log(`${(xhr.loaded / xhr.total *100)}% loaded`);
+      }
+    )
+
+
     this.camera = new THREE.PerspectiveCamera(
       75, window.innerWidth / window.innerHeight, 0.1, 1000
     );
@@ -44,7 +61,6 @@ export class EngineService {
     this.light.position.z = 10;
     this.scene.add(this.light);
 
-    //this.objLoader = new OBJLoader;
     
 
     let geometry = new THREE.BoxGeometry(1, 1, 1);
