@@ -51,35 +51,31 @@ export class EngineService {
     this.scene.add(this.camera);
 
 /*  
- *  this was your original. I added a console log for the loader to see what it is, and such, and there you can see that it has a path variable using your method.
- *  which, looking at the docs for three-loader, doesn't seem healthy.
- *  see: https://www.npmjs.com/package/three-gltf-loader#usage
- *  So I removed that part and again, as the Usage above shows, redid the loader.load (commented yours, just so that you have the comparison.)
- *  For future reference, try console.log(#ANYTHING#), it usually has some clues that you can follow if in doubt :)
- *  Good luck and let me know if you have any more webdev questions!
+   see: https://www.npmjs.com/package/three-gltf-loader#usage
  */
-//  var loader = new THREE.GLTFLoader().setPath('./src/assets/glTF');
+
     var loader = new THREE.GLTFLoader();
-    console.log(loader); //Réka added this, REMOVABLE!
-    /*loader.load('Avocado.gltf', function (gltf) {
-      gltf.scene.traverse(function (child) {
-        if (child.isMesh) {
-          var hej = 1;
-        }
-      })
-      this.scene.add(gltf.scene);
-    });*/
+    console.log(loader); 
+    
     loader.load(
       '/assets/glTF/Avocado.gltf',
       (gltf) => {
         gltf.scene.traverse(function (child) {
           if (child.isMesh) {
-            var hej = 1;
-            var hello = 'hello, Réka made it work...ish?';//Réka added this, REMOVABLE!
-            console.log(hello);//Réka added this, REMOVABLE!
+            var hello = 'hello!';//For debugging
+            console.log(hello);
           }
         })
       this.scene.add(gltf.scene);
+        },
+      ( xhr ) => {
+        // called while loading is progressing
+        console.log( `${( xhr.loaded / xhr.total * 100 )}% loaded` );
+
+    },
+    ( error ) => {
+      // called when loading has errors
+      console.error( 'An error happened', error );
     });
 
     
