@@ -14,6 +14,7 @@
   },
   "private": true,
   "dependencies": {
+    "3": "^2.1.0",
     "@angular/animations": "github:angular/animations-builds",
     "@angular/cdk": "github:angular/cdk-builds",
     "@angular/common": "^7.2.12",
@@ -27,6 +28,8 @@
     "@angular/router": "^7.2.12",
     "bootstrap": "^4.3.1",
     "core-js": "^2.6.5",
+    "jquery": "^3.3.1",
+    "render": "^0.1.4",
     "rxjs": "~6.4.0",
     "three-full": "^17.1.0",
     "three-gltf-loader": "^1.103.0",

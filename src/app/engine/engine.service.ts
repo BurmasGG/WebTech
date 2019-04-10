@@ -1,10 +1,14 @@
 import * as THREE from 'three-full';
 import { Injectable } from '@angular/core';
-import objLoader from 'three-obj-loader';
-import { GLTFLoader } from 'three';
+import {STLLoader} from 'three';
+//import objLoader from 'three-obj-loader';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { load } from '@angular/core/src/render3';
 
-
+//Thomas developer notes!
+//comment shit out until error goes away i guess
+//find ou how to install the load we're importing
+//Open avocado in blender <3
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +22,6 @@ export class EngineService {
   private light: THREE.AmbientLight;
   private cube: THREE.Mesh;
   private gltfLoader: THREE.GLTFLoader;
-
-
-
 
 
   createScene(elementId: string): void {
@@ -58,7 +59,7 @@ export class EngineService {
     console.log(loader); 
     
     loader.load(
-      '/assets/glTF/Avocado.gltf',
+      '/assets/box.gltf',
       (gltf) => {
         gltf.scene.traverse(function (child) {
           if (child.isMesh) {
@@ -67,6 +68,7 @@ export class EngineService {
           }
         })
       this.scene.add(gltf.scene);
+
         },
       ( xhr ) => {
         // called while loading is progressing
@@ -107,7 +109,6 @@ export class EngineService {
     requestAnimationFrame(() => {
       this.render();
     });
-
     this.cube.rotation.x += 0.01;
     this.cube.rotation.y += 0.01;
     this.renderer.render(this.scene, this.camera);
@@ -125,12 +126,3 @@ export class EngineService {
 }
 
 
-  //        this.gltfLoader.load(
-  //       'C:\Users\Thomas\Documents\3DMiniProject\Cube.gltf',
-  //       (gltf)=>{
-  //         this.scene.add(gltf.scene);
-  //       },
-  //       (xhr) =>{
-  //         console.log(`${(xhr.loaded / xhr.total *100)}% loaded`);
-  //       }
-  //     )
