@@ -19,8 +19,9 @@ export class EngineService {
   private renderer: THREE.WebGLRenderer;
   private camera: THREE.PerspectiveCamera;
   private scene: THREE.Scene;
-  private light: THREE.AmbientLight;
-  private cube: THREE.Mesh;
+  private Ambientlight: THREE.AmbientLight;
+  private spotlight: THREE.spotlight;
+  private cube: THREE.Mesh; 
   private gltfLoader: THREE.GLTFLoader;
 
 
@@ -59,7 +60,7 @@ export class EngineService {
     console.log(loader); 
     
     loader.load(
-      '/assets/box.gltf',
+      '/assets/Battery.gltf',
       (gltf) => {
         gltf.scene.traverse(function (child) {
           if (child.isMesh) {
@@ -81,12 +82,14 @@ export class EngineService {
     });
 
     
-    // soft white light
-    this.light = new THREE.AmbientLight(0x404040);
-    this.light.position.z = 10;
-    this.scene.add(this.light);
-
-
+   // soft white ambient light
+    this.Ambientlight = new THREE.AmbientLight(0x404040,2);
+    this.Ambientlight.position.z = 10;
+    this.scene.add(this.Ambientlight);
+   /*//Spotlight
+    this.spotlight = new THREE.spotlight(0xffffff);
+    this.spotlight.position.set(100,100,100);
+    this.scene.add(this.spotlight);*/
 
     let geometry = new THREE.BoxGeometry(1, 1, 1);
     let material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
