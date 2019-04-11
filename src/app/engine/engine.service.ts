@@ -1,14 +1,13 @@
 import * as THREE from 'three-full';
 import { Injectable } from '@angular/core';
-import {STLLoader} from 'three';
-//import objLoader from 'three-obj-loader';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { load } from '@angular/core/src/render3';
+import { Object3D } from 'three';
 
 //Thomas developer notes!
-//comment shit out until error goes away i guess
-//find ou how to install the load we're importing
-//Open avocado in blender <3
+//Access mesh coordinates
+//https://stackoverflow.com/questions/46140209/loop-rotation-on-any-axis-for-a-3d-obj-three-js 
+//see: https://www.npmjs.com/package/three-gltf-loader#usage
+
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +19,9 @@ export class EngineService {
   private camera: THREE.PerspectiveCamera;
   private scene: THREE.Scene;
   private Ambientlight: THREE.AmbientLight;
-  private spotlight: THREE.spotlight;
-  private cube: THREE.Mesh; 
-  private gltfLoader: THREE.GLTFLoader;
-
+  private spotLight: THREE.spotlight;
+  private cube: THREE.Mesh;
+  //var myObj;
 
   createScene(elementId: string): void {
 
@@ -32,19 +30,19 @@ export class EngineService {
 
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvas,
-      //alpha: true,    // transparent background
-      antialias: true // smooth edges
+      //document.getElementById('myObj'),
+      alpha: true,    // transparent background
+      antialias: true, // smooth edges
+
     });
     this.renderer.setSize((window.innerWidth / 2), (window.innerHeight / 2));
-    // this.canvas.height = window.innerHeight/2;
-    // this.canvas.width = window.innerWidth/2;
-    // this.canvas.style = "margin-left: 50%";
-    // this.canvas.setAttribute('margin-left', '50%')
 
     // create the scene
     this.scene = new THREE.Scene();
+    //set the background color of the scene with hex value
+    this.renderer.setClearColor(0x7829DE, 1);
 
-
+    
 
     this.camera = new THREE.PerspectiveCamera(
       75, window.innerWidth / window.innerHeight, 0.1, 1000
@@ -52,45 +50,39 @@ export class EngineService {
     this.camera.position.z = 5;
     this.scene.add(this.camera);
 
-/*  
-   see: https://www.npmjs.com/package/three-gltf-loader#usage
- */
-
+  
     var loader = new THREE.GLTFLoader();
-    console.log(loader); 
-    
+    console.log(loader);
+
     loader.load(
-      '/assets/Battery.gltf',
-      (gltf) => {
-        gltf.scene.traverse(function (child) {
-          if (child.isMesh) {
-            var hello = 'hello!';//For debugging
-            console.log(hello);
-          }
-        })
-      this.scene.add(gltf.scene);
-
-        },
-      ( xhr ) => {
+      '/assets/Battery.gltf', (gltf) => {
+        console.log("gltfobject:", gltf)
+       
+        gltf.scene.rotation.set(0,0,0);
+        gltf.scene.position.set(-0.33,-1.2,-0.5)
+        this.scene.add(gltf.scene);
+      },
+      (xhr) => {
         // called while loading is progressing
-        console.log( `${( xhr.loaded / xhr.total * 100 )}% loaded` );
+        console.log(`${(xhr.loaded / xhr.total * 100)}% loaded`);
 
-    },
-    ( error ) => {
-      // called when loading has errors
-      console.error( 'An error happened', error );
-    });
+      },
+      (error) => {
+        // called when loading has errors
+        console.error('An error happened', error);
+      });
 
-    
-   // soft white ambient light
-    this.Ambientlight = new THREE.AmbientLight(0x404040,2);
-    this.Ambientlight.position.z = 10;
+
+    // soft white ambient light
+    this.Ambientlight = new THREE.AmbientLight(0x404040, 3);
+    this.Ambientlight.position.z = 100;
     this.scene.add(this.Ambientlight);
-   /*//Spotlight
-    this.spotlight = new THREE.spotlight(0xffffff);
-    this.spotlight.position.set(100,100,100);
-    this.scene.add(this.spotlight);*/
 
+    /* this.spotLight = new THREE.spotlight(0xffffff,1,1000);
+     this.spotLight.position.set(0,0,100);
+     this.scene.add(this.spotLight);*/
+
+    //cube for testing things
     let geometry = new THREE.BoxGeometry(1, 1, 1);
     let material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
     this.cube = new THREE.Mesh(geometry, material);
@@ -112,6 +104,7 @@ export class EngineService {
     requestAnimationFrame(() => {
       this.render();
     });
+    //this.myObj
     this.cube.rotation.x += 0.01;
     this.cube.rotation.y += 0.01;
     this.renderer.render(this.scene, this.camera);
