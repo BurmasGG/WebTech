@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { NotifierService } from 'angular-notifier';
 @Component({
   selector: 'app-ui-infobar-bottom',
   templateUrl: './ui-infobar-bottom.component.html',
@@ -7,9 +7,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UiInfobarBottomComponent implements OnInit {
 
-  constructor() { }
+  private readonly notifier: NotifierService;
 
-  ngOnInit() {
+  constructor(notifierService: NotifierService) {
+    this.notifier = notifierService;
   }
 
+  ngOnInit() {
+
+    this.notifier.notify('InfoBox', 'Hallo?', 'INFOID');
+
+
+  }
+  position: {
+    horizontal: {
+      position: 'left',
+      diatance: 12
+    },
+    vertical: {
+      position: 'bottom',
+      distance: 12
+      gap: 10
+    }
+  }
+
+  behaviour:{
+    autohide: 5000,
+    onClick: false;
+    onMouseover: 'pauseAutiHide'
+    showDismissButti: true;
+
+  }
 }
