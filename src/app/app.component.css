@@ -1,25 +1,32 @@
-
 body {
     background-color: rgb(2, 3, 53);
 }
- 
+
 #textBoxLeft {
     width: 40%;
- 
-} 
-#BoxHeader{
+}
+
+#BoxHeader {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 50%;
     position: absolute;
     left: 45%;
     top: 5%;
     color: grey;
+    margin-left: 20%;
 }
 
-Em{
+Em {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
-#ExpansionButton{
+
+#ExpansionButton {
+    margin-left: 10%;
     color: rgb(255, 255, 255) !important;
     background-color: rgb(35, 108, 150) !important;
+    width: 90%;
+}
+
+#header {
+    margin-left: 4%;
 }
