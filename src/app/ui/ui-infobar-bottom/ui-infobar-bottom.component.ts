@@ -34,7 +34,7 @@ export class UiInfobarBottomComponent implements OnInit {
   behaviour:{
     autohide: 5000,
     onClick: false;
-    onMouseover: 'pauseAutiHide'
+    onMouseover: 'pauseAutoHide'
     showDismissButti: true;
 
   }

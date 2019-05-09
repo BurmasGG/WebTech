@@ -9,6 +9,8 @@ import { UiSidebarRightComponent } from './ui/ui-sidebar-right/ui-sidebar-right.
 import { UiComponent } from './ui/ui.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTooltipModule
   ],
   providers: [
   ],
