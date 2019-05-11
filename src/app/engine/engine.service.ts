@@ -34,7 +34,7 @@ export class EngineService {
     // create the scene
     this.scene = new THREE.Scene();
     //set the background color of the scene with hex value
-    this.renderer.setClearColor(0x7829de, 1);
+    this.renderer.setClearColor(0xFFEFF0, 1);
     //set up camera and its position
     this.camera = new THREE.PerspectiveCamera(
       75,
