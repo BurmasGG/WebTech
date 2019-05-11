@@ -28,7 +28,7 @@ export class EngineService {
       alpha: true, // transparent background
       antialias: true // smooth edges
     });
-    this.renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
+    this.renderer.setSize(window.innerWidth / 2, window.innerHeight / 1.2);
 
 
     // create the scene
@@ -52,6 +52,7 @@ export class EngineService {
       gltf => {
         console.log("gltfobject:", gltf);
         //rotation and position of the model can be accesed here.
+        gltf.scene.scale.set(1.2,1,1);
         gltf.scene.rotation.set(0, 0, 0);
         gltf.scene.position.set(-0.33, -1.2, -2);
         //Add 3D model to the scene.
@@ -103,7 +104,7 @@ export class EngineService {
   resize() {
     // This makes the render canvas rezise itself if the webpage is resized.
     let width = window.innerWidth / 2;
-    let height = window.innerHeight / 2;
+    let height = window.innerHeight / 1.2;
 
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
