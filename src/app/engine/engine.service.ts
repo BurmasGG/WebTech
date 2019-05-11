@@ -52,9 +52,9 @@ export class EngineService {
       gltf => {
         console.log("gltfobject:", gltf);
         //rotation and position of the model can be accesed here.
-        gltf.scene.scale.set(1.2,1,1);
+        gltf.scene.scale.set(0.4,0.4,0.4);
         gltf.scene.rotation.set(0, 0, 0);
-        gltf.scene.position.set(-0.33, -1.2, -2);
+        gltf.scene.position.set(+2.5, -5, -3);
         //Add 3D model to the scene.
         this.scene.add(gltf.scene);
       },
