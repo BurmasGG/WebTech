@@ -48,7 +48,7 @@ export class EngineService {
     var loader = new THREE.GLTFLoader();
 
     loader.load(
-      "/assets/Battery.gltf",
+      "/assets/Body.gltf",
       gltf => {
         console.log("gltfobject:", gltf);
         //rotation and position of the model can be accesed here.
